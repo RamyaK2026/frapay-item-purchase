@@ -1,0 +1,67 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"h1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Frapay - Items &amp; Purchases</b></span>\",\"col\":12}},{\"id\":\"s1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item Types\",\"col\":3}},{\"id\":\"s2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Items\",\"col\":3}},{\"id\":\"s3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Purchase\",\"col\":3}},{\"id\":\"s4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Purchases\",\"col\":3}},{\"id\":\"s5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Stock / Availability\",\"col\":3}},{\"id\":\"s6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Purchase Details\",\"col\":3}}]",
+ "creation": "2026-10-29 10:30:00.000000",
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "stock",
+ "idx": 0,
+ "indicator_color": "blue",
+ "is_hidden": 0,
+ "label": "Frapay",
+ "links": [],
+ "modified": "2026-10-29 10:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Frapay",
+ "name": "Frapay",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 50.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Item Types",
+   "link_to": "Frapay Item Type",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Items",
+   "link_to": "Frapay Item",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "New Purchase",
+   "link_to": "Frapay Purchase",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Purchases",
+   "link_to": "Frapay Purchase",
+   "type": "DocType"
+  },
+  {
+   "label": "Stock / Availability",
+   "link_to": "Item Stock Availability",
+   "type": "Report"
+  },
+  {
+   "label": "Purchase Details",
+   "link_to": "Purchase Details",
+   "type": "Report"
+  }
+ ],
+ "title": "Frapay"
+}

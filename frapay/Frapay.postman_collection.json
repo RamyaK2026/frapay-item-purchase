@@ -1,0 +1,51 @@
+{
+  "info": {
+    "name": "Frapay - Item & Purchase Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {"key": "key", "value": "Authorization", "type": "string"},
+      {"key": "value", "value": "token {{api_key}}:{{api_secret}}", "type": "string"},
+      {"key": "in", "value": "header", "type": "string"}
+    ]
+  },
+  "variable": [
+    {"key": "base_url", "value": "http://localhost:8000"},
+    {"key": "api_key", "value": ""},
+    {"key": "api_secret", "value": ""}
+  ],
+  "item": [
+    {
+      "name": "Item Types",
+      "item": [
+        {"name": "List item types", "request": {"method": "GET", "url": "{{base_url}}/api/resource/Frapay Item Type?fields=[\"name\",\"type_name\"]"}},
+        {"name": "Create item type", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{base_url}}/api/resource/Frapay Item Type", "body": {"mode": "raw", "raw": "{\"type_name\": \"Electronics\"}"}}},
+        {"name": "Delete item type (409 if in use)", "request": {"method": "DELETE", "url": "{{base_url}}/api/resource/Frapay Item Type/Electronics"}}
+      ]
+    },
+    {
+      "name": "Items",
+      "item": [
+        {"name": "Create item", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{base_url}}/api/resource/Frapay Item", "body": {"mode": "raw", "raw": "{\"item_name\": \"Laptop\", \"item_type\": \"Electronics\", \"purchase_date\": \"2026-10-29\", \"stock_available\": 10, \"active\": 1}"}}},
+        {"name": "List items (JOIN)", "request": {"method": "GET", "url": "{{base_url}}/api/method/frapay.api.get_items"}},
+        {"name": "Get item (JOIN)", "request": {"method": "GET", "url": "{{base_url}}/api/method/frapay.api.get_item?item=ITM-00001"}},
+        {"name": "Update item", "request": {"method": "PUT", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{base_url}}/api/resource/Frapay Item/ITM-00001", "body": {"mode": "raw", "raw": "{\"stock_available\": 25}"}}},
+        {"name": "Deactivate item", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{base_url}}/api/method/frapay.api.set_item_active", "body": {"mode": "raw", "raw": "{\"item\": \"ITM-00001\", \"active\": 0}"}}},
+        {"name": "Delete item (409 if used)", "request": {"method": "DELETE", "url": "{{base_url}}/api/resource/Frapay Item/ITM-00001"}},
+        {"name": "Stock / availability", "request": {"method": "GET", "url": "{{base_url}}/api/method/frapay.api.get_stock"}}
+      ]
+    },
+    {
+      "name": "Purchases",
+      "item": [
+        {"name": "Create purchase", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{base_url}}/api/resource/Frapay Purchase", "body": {"mode": "raw", "raw": "{\"purchase_date\": \"2026-10-29\", \"items\": [{\"item\": \"ITM-00001\", \"quantity\": 2}, {\"item\": \"ITM-00002\", \"quantity\": 5}]}"}}},
+        {"name": "List purchases", "request": {"method": "GET", "url": "{{base_url}}/api/method/frapay.api.get_purchases"}},
+        {"name": "Purchase details (JOIN)", "request": {"method": "GET", "url": "{{base_url}}/api/method/frapay.api.get_purchase?order_id=PO-00001"}},
+        {"name": "Update purchase (stock diff)", "request": {"method": "PUT", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{base_url}}/api/resource/Frapay Purchase/PO-00001", "body": {"mode": "raw", "raw": "{\"items\": [{\"item\": \"ITM-00001\", \"quantity\": 5}]}"}}},
+        {"name": "Delete purchase (403 - not allowed)", "request": {"method": "DELETE", "url": "{{base_url}}/api/resource/Frapay Purchase/PO-00001"}}
+      ]
+    }
+  ]
+}
